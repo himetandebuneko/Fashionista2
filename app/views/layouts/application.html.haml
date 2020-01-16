@@ -19,26 +19,28 @@
         var s = document.getElementsByTagName('script')[0];
         s.parentNode.insertBefore(wf, s);
       })();
-  %body
-    %header.header
-      .header__bar.row
-        %h1.grid-6
-          %a{:href => "/"} Fashionista
-        - if user_signed_in?
-          .user_nav.grid-6
-            %span
-              = current_user.nickname
-              %ul.user__info
-                %li
-                  = link_to "マイページ", "/users/#{current_user.id}"
-                  = link_to "ログアウト", destroy_user_session_path, method: :delete
-            = link_to  "投稿する", "/tweets/new", class: "post"
-        - else
-          .grid-6
-            = link_to "ログイン", new_user_session_path, class: 'post'
-            = link_to "新規登録", new_user_registration_path, class: 'post'
-    = render 'layouts/notifications'
-    = yield
-    %footer
-      %p
-        Copyright Fashionista 2019.
+  .container
+    %body
+      %header.header
+        .header__bar.row
+          %h1.grid-6
+            %a{:href => "/"} Fashionista
+          - if user_signed_in?
+            .user_nav.grid-6
+              %span
+                = current_user.nickname
+                %ul.user__info
+                  %li
+                    = link_to "マイページ", "/users/#{current_user.id}"
+                    = link_to "ログアウト", destroy_user_session_path, method: :delete
+              = link_to  "投稿する", "/tweets/new", class: "post"
+          - else
+            .grid-6
+              = link_to "ログイン", new_user_session_path, class: 'post'
+              = link_to "新規登録", new_user_registration_path, class: 'post'
+      = render 'layouts/notifications'
+      -# = render partial: 'tweets/tweet', collection: @tweets, as: :tweet
+      = yield
+      %footer
+        %p
+          Copyright Fashionista 2019.
