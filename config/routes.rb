@@ -12,6 +12,6 @@ Rails.application.routes.draw do
   resources :users, only: :show
   post   '/like/:tweet_id' => 'likes#like',   as: 'like'
   delete '/like/:tweet_id' => 'likes#unlike', as: 'unlike'
-  post 'user/guest' => 'user#guest'
+  post 'welcome/guest' => 'welcome#guest'
   root to: 'welcome#index'
 end
