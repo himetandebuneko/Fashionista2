@@ -1,5 +1,6 @@
 
 Rails.application.routes.draw do
+  get 'welcome/index'
   devise_for :users
   
   resources :tweets do
@@ -11,5 +12,6 @@ Rails.application.routes.draw do
   resources :users, only: :show
   post   '/like/:tweet_id' => 'likes#like',   as: 'like'
   delete '/like/:tweet_id' => 'likes#unlike', as: 'unlike'
-  root to: 'tweets#index'
+  post 'user/guest' => 'user#guest'
+  root to: 'welcome#index'
 end
