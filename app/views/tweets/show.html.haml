@@ -13,6 +13,7 @@
       %a{:href => "/users/#{@tweet.user.id}"}
         %span 投稿者
         = @tweet.user.nickname
+        = render 'likes/like_links', tweet: @tweet
   .container
     - if current_user
       = form_with(model: [@tweet, @comment], local: true, id: "new_comment") do |form|
