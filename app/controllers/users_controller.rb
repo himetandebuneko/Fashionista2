@@ -4,6 +4,9 @@ class UsersController < ApplicationController
     @nickname = user.nickname
     @tweets = user.tweets.page(params[:page]).per(5).order("created_at DESC")
   end
+  # def index
+  #   # @all_ranks = Tweet.find(Like.group(:tweet_id).order('count(tweet_id) desc').page(params[:page]).per(5).pluck(:tweet_id))
+  # end
 
   def guest
     guest_user # guest_userを作成する

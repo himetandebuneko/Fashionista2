@@ -1,6 +1,7 @@
 class LikesController < ApplicationController
   before_action :set_variables
 
+  
   def like
     like = current_user.likes.new(tweet_id: @tweet.id)
     like.save
