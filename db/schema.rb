@@ -35,7 +35,6 @@ ActiveRecord::Schema.define(version: 2020_01_17_074716) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
-    t.integer "likes_count"
     t.index ["text"], name: "index_tweets_on_text", length: 32
   end
 
@@ -43,8 +42,19 @@ ActiveRecord::Schema.define(version: 2020_01_17_074716) do
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
+    t.string "remember_created_at"
+    t.string "reset_password_sent_at"
+    t.string "users"
+    t.string "name"
+    t.string "password"
+    t.string "provider"
+    t.string "uid"
+    t.string "meta"
+    t.integer "sign_in_count", default: 0, null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string "current_sign_in_ip"
+    t.string "last_sign_in_ip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "nickname"
