@@ -1,5 +1,5 @@
 = form.label :image, class: "main-form__image" do
   %i.fas.fa-images
-  = form.file_field :image, class: "main-form__image--default"
+  = form.file_field :images, multiple: true, class: "main-form__image--default"
 = form.text_area :text, placeholder: "text" , rows: "10"
 = form.submit "SEND"

@@ -4,11 +4,13 @@ class TweetsController < ApplicationController
   
   def index
     @tweets = Tweet.includes(:user).order("created_at DESC").page(params[:page]).per(10)
+    
     # @all_ranks = Tweet.find(Like.group(:tweet_id).order('count(tweet_id) desc').page(params[:page]).per(5).pluck(:tweet_id))
   end
 
   def new
     @tweet = Tweet.new
+    
   end
 
   def create
@@ -24,6 +26,7 @@ class TweetsController < ApplicationController
 
   def update
     @tweet.update(tweet_params)
+    redirect_to @tweet
   end
 
   def show
@@ -41,7 +44,7 @@ class TweetsController < ApplicationController
 
   private
   def tweet_params
-    params.require(:tweet).permit(:image, :text).merge(user_id: current_user.id)
+    params.require(:tweet).permit(:text, images: []).merge(user_id: current_user.id)
   end
 
   def set_tweet
